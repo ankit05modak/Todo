@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center">
+    <form method="post">
+        {% csrf_token %}
+        <h1>Please login</h1>
+        <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="input" class="col-form-label">Username</label>
+            </div>
+            <div class="col-auto">
+                {{ form.username }}
+            </div>
+            <div class="col-auto">
+                <span id="username" class="form-text">
+                    Please enter your user name.
+                </span>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">Password</label>
+            </div>
+            <div class="col-auto">
+                {{ form.password }}
+            </div>
+            <div class="col-auto">
+                <span id="passwordHelpInline" class="form-text">
+                    Must be 8-20 characters long.
+                </span>
+            </div>
+        </div>
+        <br>
+        <div>
+            Dont have an account? <a href="{% url 'register' %}">Register</a><br>
+            Do you want to reset your password? <a
+                href="{% url 'password_reset' %}">Reset
+                Password</a>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-success">Log in</button>
+    </form>
+</div>
+{% endblock %}

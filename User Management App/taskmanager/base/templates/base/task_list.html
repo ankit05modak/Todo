@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% block body %}
+<div class="container">
+    <div>
+        <a href="{% url 'task_create' %}">Add task</a>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-center align-items-center">
+    <table class="table caption-top">
+        <caption>List of tasks</caption>
+        <thead>
+            <tr>
+                <th scope="col">{{ request.user }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <th scope="row">{{ task.title }}</th>
+                <td><a href="{% url 'task_detail' task.id %}">View</a></td>
+                <td><a href="{% url 'task_edit' task.id %}">Edit</a></td>
+                <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
+            </tr>
+            {% empty %}
+            <h3>No tasks are there for you. Please add one above.</h3>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center">
+    {{ task.title }}
+    <br>
+    {{ task.desc }}
+    <br>
+    {{ task.complete }}
+</div>
+{% endblock %}
